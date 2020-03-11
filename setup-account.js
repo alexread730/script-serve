@@ -1,12 +1,12 @@
 $(document).ready(function() {
-	$('select').niceSelect();
+  $('select').niceSelect();
 });
 
 window.onload = function() {
-	$(document).off('submit');
-	console.log('loaded boi!')
+  $(document).off('submit');
+  console.log('loaded boi!')
   var user_email = null;
-	var localSession = null;
+  var localSession = null;
 
   var serializeForm = function(form) {
     var resultObject = {};
@@ -178,16 +178,16 @@ window.onload = function() {
       if (checkedPersona) {
         personaValue = checkedPersona.value
       }
-			
+  
       console.log(personaValue)
       if (personaValue == 'Business') {
-				
+  
         currentStep = currentStep - 1;
         window.history.replaceState(null, null, `/setup-account?signupStep=${currentStep}`);
-				if (currentStep == 3) {
-					currentStep = 2
-				}
-				
+  if (currentStep == 3) {
+  currentStep = 2
+  }
+  
         $(signupNav.children[currentStep - 1]).click();
       } else {
         window.history.replaceState(null, null, `/setup-account?signupStep=${currentStep}`);
@@ -197,11 +197,11 @@ window.onload = function() {
     }
     
     //add click handle to skip button to submit current form values
-		document.querySelectorAll('.signup-skip').forEach((button) => {
+  document.querySelectorAll('.signup-skip').forEach((button) => {
     	button.onclick = function() {
       	$('form').submit();
       }
-		});
+  });
 
     $('form').submit(function(event) {
       event.preventDefault();
