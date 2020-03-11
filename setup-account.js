@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 window.onload = function() {
 	$(document).off('submit');
+	console.log('loaded boi!')
   var user_email = null;
 	var localSession = null;
 
@@ -180,8 +181,13 @@ window.onload = function() {
 			
       console.log(personaValue)
       if (personaValue == 'Business') {
+				
         currentStep = currentStep - 1;
         window.history.replaceState(null, null, `/setup-account?signupStep=${currentStep}`);
+				if (currentStep == 3) {
+					currentStep = 2
+				}
+				
         $(signupNav.children[currentStep - 1]).click();
       } else {
         window.history.replaceState(null, null, `/setup-account?signupStep=${currentStep}`);
