@@ -1,11 +1,7 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-<script>
-	$(document).ready(function() {
-  	$('select').niceSelect();
-	});
-</script>
+$(document).ready(function() {
+	$('select').niceSelect();
+});
 
-<script type="text/javascript">
 window.onload = function() {
 	$(document).off('submit');
   var user_email = null;
@@ -222,30 +218,27 @@ window.onload = function() {
   
   getSession();
 };
-</script>
-<script type="text/javascript">
-  function mountSelectChange(event) {
-     const niceSelects = document.querySelectorAll('.nice-select .current');
 
-      for(let niceSelect of niceSelects) {
-         let observer = new MutationObserver((mutation) => {
-             if(niceSelect.innerText !== 'Select') {
-                 niceSelect.style.color = '#3B3F42';
-             }
-         });   
+function mountSelectChange(event) {
+   const niceSelects = document.querySelectorAll('.nice-select .current');
 
-         observer.observe(niceSelect, { characterData: false, attributes: false, childList: true, subtree: false });
-      }
-  }
+    for(let niceSelect of niceSelects) {
+       let observer = new MutationObserver((mutation) => {
+           if(niceSelect.innerText !== 'Select') {
+               niceSelect.style.color = '#3B3F42';
+           }
+       });   
 
-  if(document.readyState === 'complete') {
-      mountSelectChange();
-  } else {
-      window.addEventListener('load', mountSelectChange);
-  }
-</script>
-<script>
-  window.intercomSettings = {
-    alignment: 'left',
-  };
-</script>
+       observer.observe(niceSelect, { characterData: false, attributes: false, childList: true, subtree: false });
+    }
+}
+
+if(document.readyState === 'complete') {
+    mountSelectChange();
+} else {
+    window.addEventListener('load', mountSelectChange);
+}
+
+window.intercomSettings = {
+  alignment: 'left',
+};
